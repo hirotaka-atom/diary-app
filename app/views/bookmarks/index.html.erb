@@ -1,0 +1,19 @@
+<div class="bookmarks">
+  <div class="container">
+    <div class="title">
+      <h1>ブックマーク一覧</h1>
+    </div>
+    <div class="form">
+    <% if @bookmarks.blank? %>
+      <p>ブックマークはありません</p>
+    <% else %>
+      <% @bookmarks.each do |bookmark| %>
+        <% @post=Post.find_by(id: bookmark.post_id) %>
+        <div class="post-item">
+          <h4><%= link_to(@post.content, "/posts/#{@post.id}") %></h4>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+
+</div>

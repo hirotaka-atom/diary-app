@@ -1,0 +1,32 @@
+<div class="users">
+  <div class="container">
+    <div class="title">
+      <h1>編集する</h1>
+    </div>
+    <%= form_tag("/users/#{@user.id}/update", {multipart: true}) do %>
+    <div class="form">
+      <div class="name">
+        <h2>名前</h2>
+        <input name="name" value="<%= @user.name %>">
+      </div>
+      <div class="image">
+        <h2>画像</h2>
+        <input type="file" name="image" value="<%= @user.image_name %>">
+      </div>
+      <div class="mail edit-mail">
+        <h2>メールアドレス<h2>
+        <input name="email" value="<%= @user.email %>">
+      </div>
+      <div class="password">
+        <h2>パスワード</h2>
+        <input name="password" value="<%= @user.password %>">
+      </div>
+      <div class="button">
+        <input type="submit" value="変更を保存する">
+      </div>
+    </div>
+
+    <% end %>
+
+  </div>
+</div>

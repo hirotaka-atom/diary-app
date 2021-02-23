@@ -1,0 +1,15 @@
+<div class="users">
+  <div class="container">
+    <div class="title">
+      <h1>アカウント</h1>
+    </div>
+    <div class="form">
+      <img src="<%= "/user_images/#{@user.image_name}" %>">
+      <h2><%= @user.name %></h2>
+      <p><%= @user.email %></p>
+      <div class="form-bottom">
+        <%= link_to("編集", "/users/#{@user.id}/edit") %>
+      </div>
+    </div>
+  </div>
+</div>

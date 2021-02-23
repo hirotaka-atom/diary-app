@@ -1,0 +1,27 @@
+<div class="posts">
+  <div class="container">
+    <div class="form">
+    <div class="post-item">
+      <h5>題名</h5>
+      <div class="post-title">
+        <p><%= @post.title %></p>
+      </div>
+      <h5>本文</h5>
+      <div class="post-text">
+        <img src="<%= "/post_images/#{@post.image}" %>">
+        <p><%= @post.content %></p>
+      </div>
+      <p><%= @post.created_at %></p>
+    </div>
+    <div class="form-bottom-right">
+          <% if Bookmark.find_by(post_id: @post.id) %>
+              <p><%= link_to("ブックマークを解除する", "/bookmarks/#{@post.id}/destroy", {method: "post"}) %></p>
+          <% else %>
+              <p><%= link_to("ブックマーク", "/bookmarks/#{@post.id}/create", {method: "post"}) %></p>
+          <% end %>
+          <p><%= link_to("編集", "/posts/#{@post.id}/edit") %></p>
+          <p><%= link_to("削除", "/posts/#{@post.id}/destroy",{method: "post"}) %></p>
+    </div>
+    </div>
+  </div>
+</div>

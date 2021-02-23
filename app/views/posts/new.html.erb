@@ -1,0 +1,21 @@
+<div class="posts">
+  <div class="container">
+    <div class="title">
+      <h1>日記を書く</h1>
+    </div>
+    <%= form_tag("/posts/create", {multipart: true}) do %>
+    <div class="form">
+        <div class="diary-name">
+          <h5>題名</h5>
+          <input name="title" value="<%= @post.title %>">
+        </div>
+        <h5>本文</h5>
+        <input type="file" name="image" value="<%= @post.image %>">
+        <textarea name="content"><%= @post.content %></textarea>
+        <div class="button">
+          <input type="submit" value="日記を保存する">
+        </div>
+    </div>
+    <% end %>
+  </div>
+</div>

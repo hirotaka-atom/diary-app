@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DiaryApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+  </head>
+
+  <body>
+    <header>
+        <div class="logo">
+            <%= link_to("diary_app", "/") %>
+        </div>
+        <div class="header-list">
+          <ul>
+            <% if session[:user_id] %>
+              <li><%= link_to("アカウント", "/users/#{@current_user.id}") %></li>
+              <li><%= link_to("日記を書く", "/posts/new") %></li>
+              <li><%= link_to("日記一覧", "/posts/index") %></li>
+              <li><%= link_to("ブックマーク一覧", "/bookmarks/index") %></li>
+              <li><%= link_to("ログアウト", "/users/logout", {method: "post"}) %></li>
+            <% else %>
+              <li id="hoge"><%= link_to("新規登録", "/users/new") %></li>
+              <li><%= link_to("ログイン", "/users/login") %></li>
+            <% end %>
+          </ul>
+        </div>
+
+
+    </header>
+
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <%= yield %>
+
+  </body>
+</html>
