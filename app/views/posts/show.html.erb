@@ -8,7 +8,9 @@
       </div>
       <h5>本文</h5>
       <div class="post-text">
-        <img src="<%= "/post_images/#{@post.image}" %>">
+        <% if @post.image.present? %>
+          <img src="<%= "/post_images/#{@post.image}" %>">
+        <% end %>
         <p><%= @post.content %></p>
       </div>
       <p><%= @post.created_at %></p>

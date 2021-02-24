@@ -92,16 +92,7 @@ header{
   margin-top:30px;
   letter-spacing:2px;
 }
-label>input{
-  display:none;
-  cursor:pointer;
-}
-label{
-  background-color:#EEEEEE;
-  border:1px solid #666666;
-  padding-right:11px;
-  cursor:pointer;
-}
+
 /* users */
 
 .edit-mail{

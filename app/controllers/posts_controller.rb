@@ -13,21 +13,25 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post=Post.new(title: params[:title], content: params[:content], user_id: @current_user.id)
-    if @post.save && params[:image]
-      @post.image="#{@post.id}.jpg"
-      image=params[:image]
-      File.binwrite("public/post_images/#{@post.image}", image.read)
-      @post.save
-      flash[:notice]="日記を保存しました。お疲れさまです。"
-      redirect_to("/posts/index")
-    elsif @post.save
-      flash[:notice]="日記を保存しました。お疲れさまです。"
-      redirect_to("/posts/index")
-    else
-      flash[:notice]="内容がありません"
-      render("posts/new")
-    end
+      if params[:title].present?
+        @post=Post.new(title: params[:title], content: params[:content], user_id: @current_user.id)
+      else
+        @post=Post.new(title: "題名なし", content: params[:content], user_id: @current_user.id)
+      end  
+      if @post.save && params[:image].present?
+        @post.image="#{@post.id}.jpg"
+        image=params[:image]
+        File.binwrite("public/post_images/#{@post.image}", image.read)
+        @post.save
+        flash[:notice]="日記を保存しました。お疲れさまです。"
+        redirect_to("/posts/index")
+      elsif @post.save && params[:image].blank?
+        flash[:notice]="日記を保存しました。お疲れさまです。"
+        redirect_to("/posts/index")
+      else
+        flash[:notice]="入力されてない部分があります"
+        render("posts/new")
+      end
   end
 
   def edit
@@ -47,6 +51,7 @@ class PostsController < ApplicationController
       flash[:notice]="日記を編集しました"
       redirect_to("/posts/index")
     else
+      flash[:notice]="入力されてない部分があります"
       render("posts/edit")
     end
   end
