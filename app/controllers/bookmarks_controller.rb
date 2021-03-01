@@ -1,6 +1,9 @@
 class BookmarksController < ApplicationController
+  before_action :trepass_not_user
   def index
-    @bookmarks=Bookmark.where(user_id: @current_user.id)
+    if @current_user.present?
+      @bookmarks=Bookmark.where(user_id: @current_user.id)
+    end
   end
 
   def create

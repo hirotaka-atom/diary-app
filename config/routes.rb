@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   post 'users/create' => 'users#create'
   get 'users/:id/edit' => 'users#edit'
   post 'users/:id/update' => 'users#update'
-
-  get '/' => 'home#top'
+  
+  root 'home#top'
 
   get 'posts/index' => 'posts#index'
   get 'posts/new' => 'posts#new'
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   post 'posts/:id/update' => "posts#update"
   post 'posts/:id/destroy' => "posts#destroy"
 
-  get 'bookmarks/index' => 'bookmarks#index'
+  get 'bookmarks/index'  => 'bookmarks#index'
   post 'bookmarks/:post_id/create' => 'bookmarks#create'
   post 'bookmarks/:post_id/destroy' => 'bookmarks#destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
