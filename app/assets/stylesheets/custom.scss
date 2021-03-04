@@ -1,155 +1,179 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@mixin box-sizing{
+ -moz-box-sizing: border-box;
+ -webkit-box-sizing: border-box;
+ box-sizing: border-box;
+}
+
+/* miscellaneous */
+
+.debug_dump{
+ clear: both;
+ float: left;
+ width: 100%;
+ margin-top: 45px;
+ @include box_sizing;
+}
 
 header{
-  background-color:#FFFFCC;
-  height:85px;
-  a{
-   text-decoration:none;
-   color:#333333;
-   font-weight:bold;
-   letter-spacing:1px;
-  }
+ background-color:#FFFFCC;
+ height:85px;
+ a{
+  text-decoration:none;
+  color:#333333;
+  font-weight:bold;
+  letter-spacing:1px;
+ }
 }
 .logo{
-  padding:0 30px;
-  line-height:85px;
-  float:left;
-  a{
-    font-size:27px;
-  }
+ padding:0 30px;
+ line-height:85px;
+ float:left;
+ a{
+   font-size:27px;
+ }
 }
 .header-list li{
-  padding:0 20px;
-  line-height:85px;
-  list-style-type:none;
-  float:left;
+ padding:0 20px;
+ line-height:85px;
+ list-style-type:none;
+ float:left;
 }
 .home{
-  background-image:url("/green.png");
-  background-size:cover;
-  text-align:center;
-  width:100%;
-  height:650px;
+ background-image:url("/green.png");
+ background-size:cover;
+ text-align:center;
+ width:100%;
+ height:650px;
 }
 .container{
-  width:1170px;
-  margin:0 auto;
+ width:1170px;
+ margin:0 auto;
 }
 .home-title{
-  padding:80px 0 30px 0;
-  cursor:pointer;
-  h1{
-    color:#A52A2A;
-    font-size:90px;
-  }
+ padding:80px 0 30px 0;
+ cursor:pointer;
+ h1{
+   color:#A52A2A;
+   font-size:90px;
+ }
 }
 .home-text{
-  display:none;
-  h2{
-    color:#A52A2A;
-    font-family:serif;
-  }
+ display:none;
+ h2{
+   color:#A52A2A;
+   font-family:serif;
+ }
 }
 .flash{
-  background-color:#C2EEFF;
-  color:#333333;
-  padding:10px 0;
-  text-align:center;
+ background-color:#C2EEFF;
+ color:#333333;
+ padding:10px 0;
+ text-align:center;
 }
 /* users, posts, bookmarks 共通　*/
 
 .users, .posts, .bookmarks{
-  padding:50px 0;
-  text-align:center;
+ padding:50px 0;
+ text-align:center;
 }
 .title{
-  padding-bottom:30px;
-  h1{
-    font-size:50px;
-    letter-spacing:2px;
-  }
+ padding-bottom:30px;
+ h1{
+   font-size:50px;
+   letter-spacing:2px;
+ }
 }
 .form{
-  background-color:#FFDBC9;
-  border:1px solid #d8dadf;
-  border-radius:20px;
-  width:580px;
-  padding:80px 0;
-  margin:auto;
+ background-color:#FFDBC9;
+ border:1px solid #d8dadf;
+ border-radius:20px;
+ width:580px;
+ padding:80px 0;
+ margin:auto;
 }
 .password, .image{
-  margin-top:40px;
+ margin-top:40px;
 }
 .button{
-  margin-top:40px;
-  input{
-    background-color:#EEEEEE;
-    font-weight:bold;
-    width:160px;
-    margin-top:30px;
-    letter-spacing:2px;
-  }
+ margin-top:40px;
+ input{
+   background-color:#EEEEEE;
+   font-weight:bold;
+   width:160px;
+   margin-top:30px;
+   letter-spacing:2px;
+ }
 }
 
 /* users */
 
 .edit-mail{
-  margin-top:40px;
+ margin-top:40px;
 }
-.name input, .mail input, .password input, .image input, .diary-name input{
-  width:340px;
-  height:30px;
+.name input, .mail input, .password input, .image input, .diary-name input input{
+ width:340px;
+ height:30px;
 }
 .image input{
-  background-color:white;
-  line-height:30px;
-  border:1px solid #666666;
+ background-color:white;
+ line-height:30px;
+ border:1px solid #666666;
 }
 .users img{
-  height:120px;
-  width:120px;
-  border-radius:40%;
-  margin-bottom:20px;
+ height:120px;
+ width:120px;
+ border-radius:40%;
+ margin-bottom:20px;
+}
+label{
+  font-size:1.3em;
+}
+.form-control{
+  margin-bottom:20px;;
+}
+.btn {
+  margin-top:30px;
 }
 /* posts */
 
 .form textarea{
-  width:400px;
-  height:300px;
-  border-radius:10px
+ width:400px;
+ height:300px;
+ border-radius:10px
 }
 .post-image input{
-  width:340px;
-  height:30px;
-  background-color:white;
-  line-height:30px;
-  border:1px solid #666666;
+ width:340px;
+ height:30px;
+ background-color:white;
+ line-height:30px;
+ border:1px solid #666666;
 }
 .post-item{
-  background-color:#FFFFEE;
-  padding:15px 0;
-  margin:0 10px;
-  border:1px solid #d8dadf;
-  border-radius:10px;
+ background-color:#FFFFEE;
+ padding:15px 0;
+ margin:0 10px;
+ border:1px solid #d8dadf;
+ border-radius:10px;
 }
 .post-title{
-  background-color:white;
-  margin:0 10px 10px 10px;
-  border:1px solid #d8dadf;
-  border-radius:10px;
+ background-color:white;
+ margin:0 10px 10px 10px;
+ border:1px solid #d8dadf;
+ border-radius:10px;
 }
 .post-text{
-  background-color:white;
-  padding:10px 0;
-  margin:0 10px;
-  border:1px solid #d8dadf;
-  border-radius:10px;
+ background-color:white;
+ padding:10px 0;
+ margin:0 10px;
+ border:1px solid #d8dadf;
+ border-radius:10px;
 }
 .posts-form-bottom p{
-  float:right;
+ float:right;
 }
 .posts img{
-  width:400px;
-  height:300px;
+ width:400px;
+ height:300px;
 }

@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
 
+  root 'home#top'
+
   get 'users/home' => 'users#home'
-  get 'users/new' => 'users#new'
+  #get 'users/new' => 'users#new'
+  get 'signup' => 'users#new'
   get 'users/login' => 'users#login_form'
   post 'users/login' => 'users#login'
   post 'users/logout' => 'users#logout'
-  get 'users/:id' => 'users#show'
-  post 'users/create' => 'users#create'
-  get 'users/:id/edit' => 'users#edit'
-  post 'users/:id/update' => 'users#update'
-  
-  root 'home#top'
+  #get 'users/:id' => 'users#show'
+  #post 'users/create' => 'users#create'
+  #get 'users/:id/edit' => 'users#edit'
+  #post 'users/:id/update' => 'users#update'
+  resources :users
 
   get 'posts/index' => 'posts#index'
   get 'posts/new' => 'posts#new'

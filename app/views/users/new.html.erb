@@ -3,21 +3,39 @@
     <div class="title">
       <h1>新規登録</h1>
     </div>
-    <%= form_tag("/users/create") do %>
-    <div class="form">
-      <div class="mail">
-        <h2>メールアドレス<h2>
-        <input name="email" placeholder="メールアドレス" value="<%= @user.email %>">
-      </div>
-      <div class="password">
-        <h2>パスワード</h2>
-        <input name="password" placeholder="パスワード" value="<%= @user.password %>">
-      </div>
-      <div class="button">
-        <input type="submit" value="登録">
-      </div>
-    </div>
-    <% end %>
+
+    <%= form_for(@user) do |f| %>
+
+
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <div class="alert alert-danger">
+            The form contains <%= pluralize(@user.errors.count, "error") %>.
+          </div>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+        
+      <%= f.label :name, "名前" %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "パスワード確認" %>
+      <%= f.password_field :password_confirmation, class: 'form-control'  %>
+
+    <%= f.submit "アカウントを作成する", class: "btn btn-primary" %>
+  <% end %>
+
 
   </div>
 </div>

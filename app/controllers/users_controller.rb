@@ -11,16 +11,18 @@ class UsersController < ApplicationController
 
   def show
     @user=User.find_by(id: params[:id])
+    #@user=User.find(params[:id])
   end
 
   def create
-    @user=User.new(name: "ユーザー", email: params[:email], password: params[:password], image_name: "th_app_icon_account.jpg")
+    #@user=User.new(name: "ユーザー", email: params[:email], password: params[:password], image_name: "th_app_icon_account.jpg")
+    @user=User.new(user_params)
     if @user.save
       session[:user_id]=@user.id
-      flash[:notice]="新規登録が完了しました。ようこそ!"
-      redirect_to("/posts/index")
+      flash[:sucess]="新規登録が完了しました。diary appへようこそ!"
+      #redirect_to("/posts/index")
+      redirect_to @user #(user_url(@user))
     else
-      flash[:notice]="メールアドレスまたはパスワードが間違っています。"
       render("users/new")
     end
   end
@@ -70,4 +72,9 @@ class UsersController < ApplicationController
     flash[:notice]="ログアウトしました"
     redirect_to("/users/login")
   end
+
+  private
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
 end
